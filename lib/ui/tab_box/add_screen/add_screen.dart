@@ -4,6 +4,7 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:seven_exam/blocs/card_bloc/card_bloc.dart';
 import 'package:seven_exam/blocs/card_bloc/card_event.dart';
+import 'package:seven_exam/cubits/tab/tab_cubit.dart';
 import 'package:seven_exam/data/models/card_model.dart';
 import 'package:seven_exam/ui/tab_box/add_screen/widget/card_expire_date.dart';
 import 'package:seven_exam/ui/tab_box/add_screen/widget/card_input_component.dart';
@@ -42,6 +43,11 @@ GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 bool isOn = false;
 
 class _AddScreenState extends State<AddScreen> {
+  @override
+  void dispose() {
+  fullNameController.clear();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -185,12 +191,6 @@ class _AddScreenState extends State<AddScreen> {
                 ]),
               ),
 
-
-
-
-
-
-
               SizedBox(
                 height: 20.h,
               ),
@@ -296,6 +296,8 @@ class _AddScreenState extends State<AddScreen> {
                     );
                     BlocProvider.of<CardBloc>(context)
                         .add(AddCard(cardModel: cardModel));
+                    fullNameController.clear();
+                    BlocProvider.of<BottomNavCubit>(context).changePageIndex(1);
                   },
                 ),
               )

@@ -60,7 +60,7 @@ class MyTextField extends StatelessWidget {
                 : false),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: validator,
-            controller: controller,
+              controller: controller,
             keyboardType: textInputType,
             decoration: InputDecoration(
               hintText: text,

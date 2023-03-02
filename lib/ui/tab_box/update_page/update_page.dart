@@ -27,6 +27,12 @@ bool isOn1 = false;
 
 class _UpdateCardScreenState extends State<UpdateCardScreen> {
   @override
+  void initState() {
+    fullNameController.text = widget.cardModel.owner;
+
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -184,7 +190,7 @@ class _UpdateCardScreenState extends State<UpdateCardScreen> {
                                   onPressed: () {
                                     setState(() {
                                       currentColor = pickerColor;
-                                      isOn =! isOn;
+                                      isOn = true;
                                     });
 
                                     Navigator.of(context).pop();
@@ -202,7 +208,9 @@ class _UpdateCardScreenState extends State<UpdateCardScreen> {
                 ),
                 MyTextField(
                   onChanged: (v) {
-                    setState(() {});
+                    setState(() {
+                      isOn1 =true;
+                    });
                   },
                   controller: fullNameController,
                   textInputType: TextInputType.text,
@@ -224,6 +232,7 @@ class _UpdateCardScreenState extends State<UpdateCardScreen> {
                                 pickerColor.toString().replaceRange(0, 10, ''),
                             owner: fullNameController.text),
                       );
+                      fullNameController.clear();
                       Navigator.pop(context);
                     },
                   ),
