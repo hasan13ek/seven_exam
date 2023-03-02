@@ -11,7 +11,8 @@ class CardModel {
     required this.iconImage,
     required this.userId,
     required this.cardName,
-    required this.color
+    required this.color,
+    required this.favorite
   });
 
   String cardId;
@@ -24,11 +25,13 @@ class CardModel {
   String expireDate;
   String iconImage;
   String userId;
+  bool favorite;
 
   factory CardModel.fromJson(Map<String, dynamic> json) => CardModel(
     cardId: json["cardId"],
     cardName: json["cardName"],
     color: json['color'],
+    favorite: json['favorite'],
     cardNumber: json["cardNumber"],
     moneyAmount: json["moneyAmount"],
     owner: json["owner"],
@@ -47,5 +50,6 @@ class CardModel {
     "expireDate": expireDate,
     "iconImage": iconImage,
     "userId": userId,
+    "favorite": favorite,
   };
 }

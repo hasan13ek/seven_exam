@@ -9,7 +9,7 @@ class CardBloc extends Bloc<CardEvent, CardState> {
     on<AddCard>(addCard);
     on<UpdateCard>(updateCard);
     on<DeleteCard>(deleteCard);
-    // on<GetCards>(getAllCards);
+    on<UpdateFavorite>(updateFavorite);
   }
 
   final CardRepository cardRepository;
@@ -37,4 +37,10 @@ class CardBloc extends Bloc<CardEvent, CardState> {
     emit(CardProgress());
     cardRepository.deleteCard(docId: event.docId);
   }
+
+  updateFavorite(UpdateFavorite event, Emitter<CardState> emit) async {
+    emit(CardProgress());
+    cardRepository.updateFavorite(favorite: event.favorite, docId: event.docId);
+  }
+
 }

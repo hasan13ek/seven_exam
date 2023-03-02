@@ -32,6 +32,7 @@ class CardRepository {
 
   Stream<List<CardModel>> getAllCards() => _firestore
       .collection("cards")
+      .where('favorite', isNotEqualTo: 'true')
       .snapshots()
       .map(
         (querySnapshot) => querySnapshot.docs
@@ -63,6 +64,31 @@ class CardRepository {
       MyUtils.getMyToast(message: er.message.toString());
     }
   }
+
+  Stream<List<CardModel>> getAllFavorite() => _firestore
+      .collection("cards")
+      .where("favorite", isEqualTo: 'true')
+      .snapshots()
+      .map(
+        (querySnapshot) => querySnapshot.docs
+        .map((doc) => CardModel.fromJson(doc.data()))
+        .toList(),
+  );
+
+
+  Future<void> updateFavorite(
+      {required bool favorite, required String docId}) async {
+    try {
+      await _firestore.collection("cards").doc(docId).update({
+        "favorite": favorite,
+      });
+      MyUtils.getMyToast(message: "Yangilandi!");
+    } on FirebaseException catch (er) {
+      MyUtils.getMyToast(message: er.message.toString());
+      debugPrint(er.toString());
+    }
+  }
+
 
 
 }

@@ -21,4 +21,6 @@ class GetCardsCubit extends Cubit<CardCubitState> {
       emit(LoadGetInSuccess(cardModel: cardModel));
     });
   }
+
+
 }

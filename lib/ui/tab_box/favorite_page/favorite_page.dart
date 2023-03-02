@@ -4,55 +4,40 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:seven_exam/blocs/card_bloc/card_bloc.dart';
 import 'package:seven_exam/blocs/card_bloc/card_event.dart';
-import 'package:seven_exam/cubits/get_card/get_card_cubit.dart';
-import 'package:seven_exam/cubits/get_card/get_card_state.dart';
 import 'package:seven_exam/cubits/get_favorite/get_favorite_cubit.dart';
-import 'package:seven_exam/ui/tab_box/favorite_page/favorite_page.dart';
+import 'package:seven_exam/cubits/get_favorite/get_favorite_state.dart';
 import 'package:seven_exam/ui/tab_box/update_page/update_page.dart';
 import 'package:seven_exam/utils/color.dart';
 import 'package:seven_exam/utils/style.dart';
 
-class GetAllCardsScreen extends StatefulWidget {
-  const GetAllCardsScreen({Key? key}) : super(key: key);
+class GetFavoriteCards extends StatefulWidget {
+  const GetFavoriteCards({Key? key}) : super(key: key);
 
   @override
-  State<GetAllCardsScreen> createState() => _GetAllCardsScreenState();
+  State<GetFavoriteCards> createState() => _GetFavoriteCardsState();
 }
 
 bool isFavorite = false;
 
-class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
+class _GetFavoriteCardsState extends State<GetFavoriteCards> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Get All Cards"),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => GetFavoriteCards()));
-              },
-              icon: Icon(
-                Icons.favorite,
-                size: 30,
-              ))
-        ],
+        title: const Text("Get All Favorite Cards"),
       ),
       body:
-          BlocBuilder<GetCardsCubit, CardCubitState>(builder: (context, state) {
-        if (state is LoadGetInProgress) {
-          return Center(
+      BlocBuilder<FavoriteCardsCubit, FavoriteCubitState>(builder: (context, state) {
+        if (state is LoadGetFavoriteInProgress) {
+          return const Center(
             child: CircularProgressIndicator(),
           );
-        } else if (state is LoadGetInSuccess) {
+        } else if (state is LoadGetFavoriteInSuccess) {
           return ListView.builder(
-              itemCount: state.cardModel.length,
+              itemCount: state.favoriteCardModel.length,
               itemBuilder: (BuildContext context, int index) {
-                var item = state.cardModel[index];
-                // var c = state.cardModel[index].color.replaceAll(')', '');
-                return
-                  Padding(
+                var item = state.favoriteCardModel[index];
+                return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
                     height: 220.h,
@@ -67,13 +52,13 @@ class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
                               end: Alignment.bottomRight,
                               colors: [
                                 Color(0xffff4b1f),
-                                Color(hexColor(state.cardModel[index].color)),
+                                Color(hexColor(state.favoriteCardModel[index].color)),
                               ]),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                                top: 10, left: 34, bottom: 26, right: 20)
+                            top: 10, left: 34, bottom: 26, right: 20)
                             .r,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,26 +71,19 @@ class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
                                   style: MyTextStyle.aeonikSemiBold.copyWith(
                                       fontSize: 16.sp, color: AppColors.white),
                                 ),
-                                IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      isFavorite =! isFavorite;
-                                    });
-                                    BlocProvider.of<CardBloc>(context).add(
-                                      UpdateFavorite(
-                                          favorite: isFavorite,
-                                          docId: state.cardModel[index].cardId),
-                                    );
-                                    setState(() {});
-                                  },
-                                  icon: Icon(
-                                    Icons.favorite,
-                                    size: 30,
-                                    color: isFavorite == false
-                                        ? Colors.white
-                                        : Colors.red,
-                                  ),
-                                )
+                                // IconButton(
+                                //
+                                //   onPressed: () {
+                                //     setState(() {
+                                //       isFavorite=!isFavorite;
+                                //     });
+                                //   },
+                                //   icon: Icon(
+                                //     Icons.favorite,
+                                //     size: 30,
+                                //     color: isFavorite==false?Colors.white:Colors.red,
+                                //   ),
+                                // )
                               ],
                             ),
                             const Spacer(),
@@ -154,8 +132,8 @@ class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
                                         maxLines: 2,
                                         style: MyTextStyle.aeonikSemiBold
                                             .copyWith(
-                                                fontSize: 16.sp,
-                                                color: AppColors.white),
+                                            fontSize: 16.sp,
+                                            color: AppColors.white),
                                       ),
                                     )
                                   ],
@@ -179,8 +157,8 @@ class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
                                       item.expireDate.toString(),
                                       style: MyTextStyle.aeonikSemiBold
                                           .copyWith(
-                                              fontSize: 16.sp,
-                                              color: AppColors.white),
+                                          fontSize: 16.sp,
+                                          color: AppColors.white),
                                     )
                                   ],
                                 ),
@@ -211,12 +189,12 @@ class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
                                                     ),
                                                     onPressed: () {
                                                       BlocProvider.of<CardBloc>(
-                                                              context)
+                                                          context)
                                                           .add(
                                                         DeleteCard(
                                                             docId: state
-                                                                .cardModel[
-                                                                    index]
+                                                                .favoriteCardModel[
+                                                            index]
                                                                 .cardId),
                                                       );
                                                       Navigator.pop(context);

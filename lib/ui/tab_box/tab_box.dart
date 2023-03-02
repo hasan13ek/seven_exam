@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:seven_exam/cubits/tab/tab_cubit.dart';
 import 'package:seven_exam/ui/tab_box/add_screen/add_screen.dart';
 import 'package:seven_exam/ui/tab_box/get_page/get_page.dart';
+import 'package:seven_exam/ui/tab_box/payment_screen/payment_screen.dart';
 import 'package:seven_exam/utils/color.dart';
 import 'package:seven_exam/utils/icons/app_icons.dart';
 
@@ -26,7 +27,7 @@ class _TabBoxState extends State<TabBox> {
     // screens.add(ProfileScreen());
     screens.add(AddScreen());
     screens.add(GetAllCardsScreen());
-    screens.add(Container());
+    screens.add(PaymentScreen());
     super.initState();
   }
 

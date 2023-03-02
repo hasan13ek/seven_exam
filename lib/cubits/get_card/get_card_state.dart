@@ -17,3 +17,4 @@ class LoadGetInFailure extends CardCubitState  {
 
   final String error;
 }
+

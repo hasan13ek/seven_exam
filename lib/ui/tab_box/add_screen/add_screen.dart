@@ -264,7 +264,7 @@ class _AddScreenState extends State<AddScreen> {
                 child: myDropDown(),
               ),
               SizedBox(
-                height: 132.h,
+                height: 20.h,
               ),
               SizedBox(
                 width: 380.w,
@@ -276,6 +276,7 @@ class _AddScreenState extends State<AddScreen> {
                   buttonText: 'Add Card',
                   onTap: () async {
                     CardModel cardModel = await CardModel(
+                      favorite: false,
                       cardId: '',
                       color: pickerColor.toString().replaceRange(0, 10, ''),
                       cardNumber: cardNumber,

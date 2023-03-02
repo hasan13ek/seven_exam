@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -7,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:seven_exam/blocs/card_bloc/card_bloc.dart';
-import 'package:seven_exam/blocs/card_bloc/card_event.dart';
 import 'package:seven_exam/cubits/get_card/get_card_cubit.dart';
+import 'package:seven_exam/cubits/get_favorite/get_favorite_cubit.dart';
 import 'package:seven_exam/cubits/tab/tab_cubit.dart';
 import 'package:seven_exam/data/repositories/card_repository.dart';
 import 'package:seven_exam/route.dart';
@@ -37,7 +35,16 @@ class App extends StatelessWidget {
               cardRepository: context.read<CardRepository>(),
             ),
           ),
-          BlocProvider(create: (context)=>GetCardsCubit(context.read<CardRepository>(),)..fetchAllAppointments(),)
+          BlocProvider(
+            create: (context) => GetCardsCubit(
+              context.read<CardRepository>()..getAllFavorite(),
+            )..fetchAllAppointments(),
+          ),
+          BlocProvider(
+            create: (context) => FavoriteCardsCubit(
+              context.read<CardRepository>()..getAllFavorite(),
+            )..fetchAllFavoriteCards(),
+          ),
         ],
         child: MyApp(),
       ),

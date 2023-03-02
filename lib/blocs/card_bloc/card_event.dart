@@ -23,3 +23,9 @@ class DeleteCard extends CardEvent {
 class GetCards extends CardEvent {
 
 }
+
+class UpdateFavorite extends CardEvent{
+  bool favorite;
+  String docId;
+  UpdateFavorite({required this.favorite, required this.docId});
+}
