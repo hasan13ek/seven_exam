@@ -280,7 +280,7 @@ class _AddScreenState extends State<AddScreen> {
                       cardId: '',
                       color: pickerColor.toString().replaceRange(0, 10, ''),
                       cardNumber: cardNumber,
-                      moneyAmount: 'moneyAmount',
+                      moneyAmount: 10000,
                       owner: fullNameController.text,
                       expireDate: expiryDate,
                       iconImage:  dropdownValue.length == 6
@@ -298,6 +298,8 @@ class _AddScreenState extends State<AddScreen> {
                     BlocProvider.of<CardBloc>(context)
                         .add(AddCard(cardModel: cardModel));
                     fullNameController.clear();
+                    expiryDate = '';
+                    cardNumber = '';
                     BlocProvider.of<BottomNavCubit>(context).changePageIndex(1);
                   },
                 ),

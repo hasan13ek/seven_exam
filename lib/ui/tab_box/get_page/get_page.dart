@@ -20,6 +20,7 @@ class GetAllCardsScreen extends StatefulWidget {
 }
 
 bool isFavorite = false;
+bool isPass = false;
 
 class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
   @override
@@ -73,7 +74,7 @@ class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                                top: 10, left: 34, bottom: 26, right: 20)
+                                top: 4, left: 34, bottom: 26, right: 20)
                             .r,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,12 +109,21 @@ class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
                                 )
                               ],
                             ),
-                            const Spacer(),
+                            Row(
+                              children: [
+                                IconButton(onPressed: (){
+                                  setState(() {
+                                    isPass=!isPass;
+                                  });
+                                }, icon: Icon(isPass?Icons.visibility:Icons.visibility_off,color: Colors.white,)),
+                                Visibility(visible: isPass,child: Text(item.moneyAmount.toString(),style: const TextStyle(color: Colors.white),),),
+                              ],
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  item.cardNumber.toString(),
+                                  item.cardNumber.toString().replaceRange(5, 14, '**** **** '),
                                   style: MyTextStyle.aeonikSemiBold.copyWith(
                                       fontSize: 22.sp, color: AppColors.white),
                                 ),
@@ -129,21 +139,12 @@ class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
                                 ),
                               ],
                             ),
-                            const Spacer(),
-                            SizedBox(
-                              height: 8.h,
-                            ),
+
                             Row(
                               children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      "Card Holder name",
-                                      style: MyTextStyle.aeonikRegular.copyWith(
-                                          fontSize: 12.sp,
-                                          color: AppColors.white),
-                                    ),
                                     SizedBox(
                                       height: 9.h,
                                     ),
@@ -161,17 +162,11 @@ class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
                                   ],
                                 ),
                                 SizedBox(
-                                  width: 52.5.w,
+                                  width: 42.5.w,
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      "Expiry Date",
-                                      style: MyTextStyle.aeonikRegular.copyWith(
-                                          fontSize: 12.sp,
-                                          color: AppColors.white),
-                                    ),
                                     SizedBox(
                                       height: 9.h,
                                     ),
@@ -185,7 +180,7 @@ class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
                                   ],
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(2.0),
+                                  padding: const EdgeInsets.only(left: 48.0,top: 4).r,
                                   child: IconButton(
                                       onPressed: () {
                                         showDialog(
@@ -228,7 +223,8 @@ class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
                                       },
                                       icon: Icon(
                                         Icons.delete,
-                                        size: 30,
+                                        size: 24.w,
+                                        color: Colors.white,
                                       )),
                                 ),
                                 IconButton(
@@ -244,7 +240,8 @@ class _GetAllCardsScreenState extends State<GetAllCardsScreen> {
                                     },
                                     icon: Icon(
                                       Icons.edit_outlined,
-                                      size: 30,
+                                      size: 24.w,
+                                      color: Colors.white,
                                     )),
                               ],
                             )

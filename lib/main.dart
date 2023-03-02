@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:seven_exam/app/app.dart';
 import 'package:seven_exam/app/bloc_observer.dart';
+import 'package:seven_exam/data/notification_service/local_notification_service.dart';
 
 
 Future<void> main() async {
@@ -21,6 +22,8 @@ Future<void> main() async {
   /// KERAK BOLIB QOLADI await StorageRepository.getInstance();
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp();
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  LocalNotificationService.localNotificationService.init(navigatorKey);
   // FirebaseMessaging.onBackgroundMessage();
   await FirebaseMessaging.instance.subscribeToTopic("my_news");
   SystemChrome.setPreferredOrientations([

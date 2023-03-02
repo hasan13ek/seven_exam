@@ -20,7 +20,7 @@ class CardModel {
   // var gradient;
   String color;
   String cardNumber;
-  String moneyAmount;
+  int moneyAmount;
   String owner;
   String expireDate;
   String iconImage;
