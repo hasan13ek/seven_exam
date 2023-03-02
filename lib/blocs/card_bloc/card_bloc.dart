@@ -30,7 +30,7 @@ class CardBloc extends Bloc<CardEvent, CardState> {
   updateCard(UpdateCard event, Emitter<CardState> emit) async {
     emit(CardProgress());
     cardRepository.updateCards(
-        gradient: event.gradient, docId: event.docId, owner: event.owner);
+        color: event.color, docId: event.docId, owner: event.owner);
   }
 
   deleteCard(DeleteCard event, Emitter<CardState> emit) async {

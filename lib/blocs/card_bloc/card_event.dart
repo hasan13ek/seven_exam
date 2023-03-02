@@ -9,10 +9,10 @@ class AddCard extends CardEvent {
 
 class UpdateCard extends CardEvent {
   final String docId;
-  final String gradient;
+  final String color;
   final String owner;
   UpdateCard(
-      {required this.docId, required this.gradient, required this.owner});
+      {required this.docId, required this.color, required this.owner});
 }
 
 class DeleteCard extends CardEvent {

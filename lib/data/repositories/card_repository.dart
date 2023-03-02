@@ -41,10 +41,10 @@ class CardRepository {
 
 
   Future<void> updateCards(
-      {required var gradient, required String docId,required String owner}) async {
+      {required var color, required String docId,required String owner}) async {
     try {
       await _firestore.collection("cards").doc(docId).update({
-        "gradient": gradient,
+        "color": color,
         "owner": owner,
       });
       MyUtils.getMyToast(message: "Yangilandi!");

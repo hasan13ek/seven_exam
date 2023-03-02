@@ -374,13 +374,3 @@ class _AddScreenState extends State<AddScreen> {
     );
   }
 }
-
-// extension StringExtensions on String {
-//   String removeHasan() {
-//     return replaceAll('/', '');
-//   }
-//
-//   String removeTire() {
-//     return replaceAll('-', '');
-//   }
-// }
