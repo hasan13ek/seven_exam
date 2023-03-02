@@ -1,0 +1,129 @@
+name: seven_exam
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  flutter_holo_date_picker: ^1.1.0
+  adaptive_theme: ^3.1.1
+  sqflite: ^2.2.3
+  cached_network_image: ^3.2.3
+  change_app_package_name: ^1.1.0
+  cloud_firestore: ^4.1.0
+  connectivity_plus: ^2.3.7
+  dio: ^4.0.6
+  dotted_border: ^2.0.0+2
+  easy_localization: ^3.0.1
+  email_validator: ^2.1.16
+  equatable: ^2.0.5
+  file_picker: ^5.0.1
+  firebase_core: ^2.3.0
+  firebase_messaging: ^14.1.1
+  firebase_storage: ^11.0.6
+  flutter_bloc: ^8.1.1
+  flutter_linkify: ^5.0.2
+  flutter_local_notifications: ^12.0.2
+  flutter_rating_bar: ^4.0.1
+  flutter_screenutil: ^5.6.0
+  flutter_spinkit: ^5.1.0
+  flutter_svg: ^1.1.1+1
+  fluttertoast: ^8.0.9
+  font_awesome_flutter: ^10.1.0
+  formz: ^0.4.0
+  geolocator: ^9.0.2
+  google_maps_flutter: ^2.2.1
+  image_picker: ^0.8.5+3
+  intl: ^0.17.0
+  json_serializable: ^6.3.1
+  lottie: ^1.4.3
+  mask_text_input_formatter: ^2.3.0
+  meta: ^1.7.0
+  modal_bottom_sheet: ^2.0.1
+  nfc_manager: ^3.2.0
+  open_filex: ^4.1.1
+  path_provider: ^2.0.11
+  permission_handler: ^10.2.0
+  photo_view: ^0.14.0
+  shimmer: ^2.0.0
+  smooth_page_indicator: ^1.0.0
+  url_launcher: ^6.1.4
+  firebase_auth: ^4.2.5
+  zoom_tap_animation: ^1.1.0
+  keyboard_dismisser: ^3.0.0
+  animated_snack_bar: ^0.3.0
+  google_sign_in: ^5.4.3
+  stop_watch_timer: ^2.0.0
+  shared_preferences: ^2.0.17
+  flutter_colorpicker: ^1.0.3
+  get_it: ^7.2.0
+  google_fonts: ^3.0.1
+  flutter_dismissible_tile: ^1.0.2
+
+dev_dependencies:
+  build_runner: ^2.2.0
+  flutter_launcher_icons: ^0.10.0
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/images/
+    - assets/lottie/
+    - assets/svg/
+    - assets/svg/navigation/
+    - assets/icons/
+    - assets/translations/
+
+  fonts:
+    - family: Aeonik-Air
+      fonts:
+        - asset: assets/fonts/Aeonik-Air.otf
+    - family: Aeonik-AirItalic
+      fonts:
+        - asset: assets\fonts\Aeonik-AirItalic.otf
+    - family: Aeonik-Black
+      fonts:
+        - asset: assets\fonts\Aeonik-Black.otf
+    - family: Aeonik-Bold
+      fonts:
+        - asset: assets\fonts\Aeonik-Bold.otf
+    - family: Aeonik-BoldItalic
+      fonts:
+        - asset: assets\fonts\Aeonik-BoldItalic.otf
+    - family: Aeonik-Light
+      fonts:
+        - asset: assets\fonts\Aeonik-Light.otf
+    - family: Aeonik-LightItalic
+      fonts:
+        - asset: assets\fonts\Aeonik-LightItalic.otf
+    - family: Aeonik-Medium
+      fonts:
+        - asset: assets\fonts\Aeonik-Medium.otf
+    - family: Aeonik-MediumItalic
+      fonts:
+        - asset: assets\fonts\Aeonik-MediumItalic.otf
+    - family: Aeonik-Regular
+      fonts:
+        - asset: assets\fonts\Aeonik-Regular.otf
+    - family: Aeonik-RegularItalic
+      fonts:
+        - asset: assets\fonts\Aeonik-RegularItalic.otf
+    - family: Aeonik-ThinItalic
+      fonts:
+        - asset: assets\fonts\Aeonik-ThinItalic.otf

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "108234244252",
+    "project_id": "seven-exam",
+    "storage_bucket": "seven-exam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108234244252:android:38c20d39ad30cf81b7ad59",
+        "android_client_info": {
+          "package_name": "com.example.seven_exam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108234244252-94vb3eej2fmtpo89gcb4v8g7sn824gnv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7ntkR-XPET7FLh8hSwclRWlj0u1HLa00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "108234244252-94vb3eej2fmtpo89gcb4v8g7sn824gnv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
